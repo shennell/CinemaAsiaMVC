@@ -1,0 +1,33 @@
+﻿@model List<Watchlist>
+@{
+    ViewData["Title"] = "Watchlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Watchlist</h1>
+
+<div class="@TempData["AlertClass"]">@TempData["ResultMessage"]</div>
+
+@if (Model.Count > 0)
+{
+<div class="row">
+    @foreach (var watchlist in Model)
+    {
+    <div class="col-lg-3 cold-md-3 col-sm-6">
+        <a asp-controller="Browse" asp-action="Movie" asp-route-Id="@watchlist.Movie.Id">
+            <div class="card card-custom" style="width: 15rem;">
+                    <img src="@watchlist.Movie.ThumbnailUrl" class="card-img-top" alt="@watchlist.Movie.Title" />
+                    <div class="card-body">
+                        <h6 class="card-title" style="font-weight: bold;">@watchlist.Movie.Title (@watchlist.Movie.YearOfRelease)</h6>
+                        <a asp-controller="Watchlist" asp-action="Remove" asp-route-Id="@watchlist.Id"><i class="fas fa-trash fa-lg bottom-right" style="color: red;"></i></a>
+                    </div>
+            </div>
+        </a>
+    </div>
+    }
+</div>
+}
+else
+{
+    <p>You have no movies in your watchlist yet.</p>
+}

@@ -1,0 +1,37 @@
+﻿@model Movie
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Model.ThumbnailUrl" class="card-img" alt="@Model.Title" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">@Model.Title (@Model.YearOfRelease)</h2>
+                <p class="card-text">@Model.Synopsis</p>
+                <table>
+                    <tr>
+                        <th class="col-space">Director:</th>
+                        <td>@Model.Director</td>
+                    </tr>
+                    <tr>
+                        <th class="col-space">Country:</th>
+                        <td>@Model.Country</td>
+                    </tr>
+                    <tr>
+                        <th class="col-space">Genre:</th>
+                        <td>@Model.Genre</td>
+                    </tr>
+                </table>
+                <br /><a class="btn btn-primary" asp-controller="Watchlist" asp-action="Add" asp-route-movieId="@Model.Id">Add to Watchlist</a>
+            </div>
+        </div>
+    </div>
+</div>

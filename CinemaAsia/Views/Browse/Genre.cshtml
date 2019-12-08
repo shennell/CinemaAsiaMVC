@@ -1,0 +1,22 @@
+﻿@model genreViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<div class="row">
+    @foreach (var movie in Model.Movies)
+    {
+    <div class="col-lg-3 cold-md-3 col-sm-6">
+        <a asp-controller="Browse" asp-action="Movie" asp-route-Id="@movie.Id">
+            <div class="card card-custom" style="width: 15rem;">
+                <img src="@movie.ThumbnailUrl" class="card-img-top" alt="@movie.Title" />
+                <div class="card-body">
+                    <h6 class="card-title" style="font-weight: bold;">@movie.Title (@movie.YearOfRelease)</h6>
+                </div>
+            </div>
+        </a>
+    </div>
+    }
+</div>
