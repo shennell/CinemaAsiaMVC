@@ -1,5 +1,5 @@
 # CinemaAsiaMVC
-ASP.NET Core MVC 3.0 website with CRUD operations and different user roles
+ASP.NET Core MVC 3.0 website with CRUD operations and different user roles.
 
 CinemaAsia is a movie database website where you can browse the latest movies from across Asia.
 
